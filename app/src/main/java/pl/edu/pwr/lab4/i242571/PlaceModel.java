@@ -8,21 +8,23 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
 
-public class EventModel implements Serializable {
+public class PlaceModel implements Serializable {
     private String name;
     private String description;
-    private String place;
+    private int imgResource;
+    private int videoResource;
     private double latitude;
     private double longitude;
-    private int imgResource;
+    private String language;
 
-    public EventModel(String name, String description, String place, int imgResource, double latitude, double longitude){
+    public PlaceModel(String name, String description, int imgResource, int videoResource, double latitude, double longitude, String language){
         this.name=name;
         this.description=description;
-        this.place=place;
         this.imgResource=imgResource;
         this.latitude=latitude;
         this.longitude = longitude;
+        this.videoResource = videoResource;
+        this.language = language;
     }
 
     public String getName() {
@@ -33,12 +35,16 @@ public class EventModel implements Serializable {
         return description;
     }
 
-    public String getPlace() {
-        return place;
-    }
-
     public int getImageResource() {
         return imgResource;
+    }
+
+    public int getVideoResource() {
+        return videoResource;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 
     public LatLng getCoordinates(){

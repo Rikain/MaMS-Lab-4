@@ -19,19 +19,25 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_events, R.string.tab_text_places, R.string.tab_text_accommodations, R.string.tab_text_guided};
     private final Context mContext;
+    private String language;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, String language) {
         super(fm);
         mContext = context;
+        this.language = language;
     }
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
             case 0:
-                return new EventFragment();
+                return new EventFragment(language);
+            case 1:
+                return new PlaceFragment(language);
+            case 2:
+                return new AccommodationFragment(language);
+            case 3:
+                return new TourFragment(language);
             default:
                 return PlaceholderFragment.newInstance(position + 1);
         }

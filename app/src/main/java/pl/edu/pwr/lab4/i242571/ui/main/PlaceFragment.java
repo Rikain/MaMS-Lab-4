@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,21 +19,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.lab4.i242571.Data;
-import pl.edu.pwr.lab4.i242571.EventActivity;
-import pl.edu.pwr.lab4.i242571.EventModel;
-import pl.edu.pwr.lab4.i242571.MainActivity;
+import pl.edu.pwr.lab4.i242571.PlaceActivity;
+import pl.edu.pwr.lab4.i242571.PlaceModel;
 import pl.edu.pwr.lab4.i242571.R;
 
-public class EventFragment extends Fragment implements OnEventClickListener {
+public class PlaceFragment extends Fragment implements OnPlaceClickListener {
 
-    public static final String EventPosMessage = "pl.edu.pwr.lab1.i242571.EVENTPOSMESSAGE";
+    public static final String placePosMessage = "pl.edu.pwr.lab1.i242571.PLACEPOSMESSAGE";
+
 
     private RecyclerView recyclerview;
-    private List<EventModel> mEventModel;
-    private EventRVAdapter adapter;
+    private List<PlaceModel> mPlaceModel;
+    private PlaceRVAdapter adapter;
     String lang;
 
-    public EventFragment(String lang) {
+    public PlaceFragment(String lang) {
         this.lang = lang;
     }
 
@@ -47,7 +46,7 @@ public class EventFragment extends Fragment implements OnEventClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_event, container, false);
+        View view = inflater.inflate(R.layout.fragment_place, container, false);
 
         recyclerview = (RecyclerView) view.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -60,19 +59,19 @@ public class EventFragment extends Fragment implements OnEventClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mEventModel = new ArrayList<>();
+        mPlaceModel = new ArrayList<>();
+        mPlaceModel = Data.generatePlaces(lang);
 
-        mEventModel = Data.generateEvents(lang);
-
-        adapter = new EventRVAdapter(mEventModel);
+        adapter = new PlaceRVAdapter(mPlaceModel);
         adapter.setListener(this);
         recyclerview.setAdapter(adapter);
     }
 
     @Override
-    public void onEventClick(EventModel eventModel) {
-        Intent intent = new Intent(this.getContext(), EventActivity.class);
-        intent.putExtra(EventPosMessage, eventModel);
+    public void onPlaceClick(PlaceModel placeModel) {
+        Intent intent = new Intent(this.getContext(), PlaceActivity.class);
+        intent.putExtra(placePosMessage, placeModel);
+        intent.putExtra("parent", "MAIN");
         startActivity(intent);
     }
 }

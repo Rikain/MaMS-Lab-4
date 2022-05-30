@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.lab4.i242571.EventModel;

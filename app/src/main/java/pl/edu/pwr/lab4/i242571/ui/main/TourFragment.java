@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,22 +19,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.lab4.i242571.Data;
-import pl.edu.pwr.lab4.i242571.EventActivity;
-import pl.edu.pwr.lab4.i242571.EventModel;
-import pl.edu.pwr.lab4.i242571.MainActivity;
+import pl.edu.pwr.lab4.i242571.PlaceModel;
+import pl.edu.pwr.lab4.i242571.TourActivity;
+import pl.edu.pwr.lab4.i242571.TourModel;
 import pl.edu.pwr.lab4.i242571.R;
 
-public class EventFragment extends Fragment implements OnEventClickListener {
+public class TourFragment extends Fragment implements OnTourClickListener {
 
-    public static final String EventPosMessage = "pl.edu.pwr.lab1.i242571.EVENTPOSMESSAGE";
+    public static final String tourPosMessage = "pl.edu.pwr.lab1.i242571.TOURPOSMESSAGE";
+
 
     private RecyclerView recyclerview;
-    private List<EventModel> mEventModel;
-    private EventRVAdapter adapter;
-    String lang;
+    private List<TourModel> mTourModel;
+    private TourRVAdapter adapter;
+    private String lang;
 
-    public EventFragment(String lang) {
+    public TourFragment(String lang) {
         this.lang = lang;
+        // Required empty public constructor
     }
 
     @Override
@@ -47,7 +48,7 @@ public class EventFragment extends Fragment implements OnEventClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_event, container, false);
+        View view = inflater.inflate(R.layout.fragment_tour, container, false);
 
         recyclerview = (RecyclerView) view.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -60,19 +61,19 @@ public class EventFragment extends Fragment implements OnEventClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mEventModel = new ArrayList<>();
+        mTourModel = new ArrayList<>();
 
-        mEventModel = Data.generateEvents(lang);
+        mTourModel = Data.generateTours(lang);
 
-        adapter = new EventRVAdapter(mEventModel);
+        adapter = new TourRVAdapter(mTourModel);
         adapter.setListener(this);
         recyclerview.setAdapter(adapter);
     }
 
     @Override
-    public void onEventClick(EventModel eventModel) {
-        Intent intent = new Intent(this.getContext(), EventActivity.class);
-        intent.putExtra(EventPosMessage, eventModel);
+    public void onTourClick(TourModel tourModel) {
+        Intent intent = new Intent(this.getContext(), TourActivity.class);
+        intent.putExtra(tourPosMessage, tourModel);
         startActivity(intent);
     }
 }

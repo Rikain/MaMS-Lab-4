@@ -8,4 +8,9 @@
     <dimen name="name_size">30sp</dimen>
     <dimen name="desc_title_size">20sp</dimen>
     <dimen name="desc_size">15sp</dimen>
+    <dimen name="map_width">300dp</dimen>
+    <dimen name="map_height">300dp</dimen>
+    <dimen name="space">10dp</dimen>
+    <dimen name="icon_size">100dp</dimen>
+    <dimen name="max_text_item_width">250dp</dimen>
 </resources>

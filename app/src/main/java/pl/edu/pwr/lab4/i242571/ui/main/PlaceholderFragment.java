@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import pl.edu.pwr.lab4.i242571.R;
 import pl.edu.pwr.lab4.i242571.databinding.FragmentMainBinding;
 
 /**

@@ -17,16 +17,8 @@
         android:layout_gravity="center"
         >
         <TextView
-            android:id="@+id/event_name_tv"
+            android:id="@+id/place_name_tv"
             android:textSize="@dimen/desc_title_size"
-            android:layout_width="@dimen/max_text_item_width"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-
-        <TextView
-            android:id="@+id/event_place_tv"
-            android:textSize="@dimen/desc_size"
             android:layout_width="@dimen/max_text_item_width"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,7 +26,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/event_icon_iv"
+        android:id="@+id/place_icon_iv"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
         android:layout_weight="1"

@@ -15,12 +15,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import pl.edu.pwr.lab4.i242571.ui.main.AccommodationFragment;
 
-import pl.edu.pwr.lab4.i242571.ui.main.EventFragment;
 
-public class EventActivity extends AppCompatActivity implements OnMapReadyCallback{
-
-    private static final String MAPVIEW_BUNDLE_KEY = "EventMapViewBundleKey";
+public class AccommodationActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private static final String MAPVIEW_BUNDLE_KEY = "AccommodationMapViewBundleKey";
     private MapView mMapView;
     private String placeName;
     private LatLng coordinates;
@@ -28,21 +27,21 @@ public class EventActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.activity_accomodation);
 
-        TextView nameTv = findViewById(R.id.event_name_tv);
-        TextView descTv = findViewById(R.id.event_description_tv);
-        ImageView imageIv = findViewById(R.id.event_icon_iv);
+        TextView nameTv = findViewById(R.id.accommodation_name_tv);
+        TextView descTv = findViewById(R.id.accommodation_description_tv);
+        ImageView imageIv = findViewById(R.id.accommodation_icon_iv);
 
         Intent intent = getIntent();
-        EventModel event = (EventModel) intent.getSerializableExtra(EventFragment.EventPosMessage);
+        AccommodationModel accommodation = (AccommodationModel) intent.getSerializableExtra(AccommodationFragment.accommodationPosMessage);
 
-        placeName = event.getPlace();
-        coordinates = event.getCoordinates();
+        placeName = accommodation.getPlace();
+        coordinates = accommodation.getCoordinates();
 
-        nameTv.setText(event.getName());
-        descTv.setText(event.getDescription());
-        imageIv.setImageResource(event.getImageResource());
+        nameTv.setText(accommodation.getName());
+        descTv.setText(accommodation.getDescription());
+        imageIv.setImageResource(accommodation.getImageResource());
 
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {

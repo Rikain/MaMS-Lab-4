@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Przewodnik po mieście</string>
+    <string name="tab_text_events">Wydarzenia</string>
+    <string name="tab_text_places">Miejsca</string>
+    <string name="tab_text_accommodations">Zakwaterowanie</string>
+    <string name="tab_text_guided">Wycieczki z przewodnikiem</string>
+    <string name="hello_blank_fragment">Witam pusta strona</string>
+    <string name="description_string">Opis:</string>
+    <string name="tts_btn">Posłuchaj opisu</string>
+</resources>
